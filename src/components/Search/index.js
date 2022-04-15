@@ -139,11 +139,11 @@ const Heading = styled(Row)`
 `
 
 const Gray = styled.span`
-  color: #888d9b;
+  color: #b986c9;
 `
 
 const Blue = styled.span`
-  color: #2172e5;
+  color: #E650C5;
   :hover {
     cursor: pointer;
   }
@@ -430,10 +430,10 @@ export const Search = ({ small = false }) => {
               : below410
               ? 'Search...'
               : below470
-              ? 'Search Uniswap...'
+              ? 'Search Telefy...'
               : below700
               ? 'Search pairs and tokens...'
-              : 'Search Uniswap pairs and tokens...'
+              : 'Search Telefy pairs and tokens...'
           }
           value={value}
           onChange={(e) => {
