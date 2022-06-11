@@ -1,3 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react/prop-types */
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React, { useState, useEffect, useMemo, useRef } from 'react'
 import styled from 'styled-components'
 
@@ -143,7 +146,7 @@ const Gray = styled.span`
 `
 
 const Blue = styled.span`
-  color: #E650C5;
+  color: #e650c5;
   :hover {
     cursor: pointer;
   }

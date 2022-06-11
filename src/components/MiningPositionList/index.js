@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react'
 import { useMedia } from 'react-use'
 import dayjs from 'dayjs'

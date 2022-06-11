@@ -20,7 +20,7 @@ export const healthClient = new ApolloClient({
 
 export const v1Client = new ApolloClient({
   link: new HttpLink({
-    uri: 'https://api.thegraph.com/subgraphs/name/ianlapham/uniswap',
+    uri: 'https://api.thegraph.com/subgraphs/name/telefy/teleswap-subgraph-rinkeby',
   }),
   cache: new InMemoryCache(),
   shouldBatch: true,

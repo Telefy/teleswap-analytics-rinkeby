@@ -1,12 +1,13 @@
+/* eslint-disable react/prop-types */
 import React from 'react'
 import { Flex } from 'rebass'
 
 import Link from '../Link'
 
 const links = [
-  { url: 'https://uniswap.io', text: 'About' },
-  { url: 'https://docs.uniswap.io/', text: 'Docs' },
-  { url: 'https://github.com/Uniswap/uniswap-info', text: 'Code' },
+  { url: 'https://telefy.finance', text: 'About' },
+  { url: 'https://telefy.finance', text: 'Docs' },
+  { url: 'https://github.com/Telefy/teleswap-analytics', text: 'Code' },
 ]
 
 const FooterLink = ({ children, ...rest }) => (

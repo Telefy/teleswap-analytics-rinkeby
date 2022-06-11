@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React, { createContext, useContext, useReducer, useMemo, useCallback, useEffect, useState } from 'react'
 import { client } from '../apollo/client'
 import dayjs from 'dayjs'
@@ -504,7 +506,7 @@ const PAIRS_TO_FETCH = 500
 const TOKENS_TO_FETCH = 500
 
 /**
- * Loop through every pair on uniswap, used for search
+ * Loop through every pair on teleswap, used for search
  */
 async function getAllPairsOnUniswap() {
   try {
@@ -532,7 +534,7 @@ async function getAllPairsOnUniswap() {
 }
 
 /**
- * Loop through every token on uniswap, used for search
+ * Loop through every token on teleswap, used for search
  */
 async function getAllTokensOnUniswap() {
   try {
