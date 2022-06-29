@@ -4,8 +4,8 @@ import dayjs from 'dayjs'
 import { getShareValueOverTime } from '.'
 
 export const priceOverrides = [
-  '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48', // USDC
-  '0x6b175474e89094c44da98b954eedeac495271d0f', // DAI
+  '0x4dbcdf9b62e891a7cec5a2568c3f4faf9e8abe2b', // USDC
+  '0x5592ec0cfb4dbc12d3ab100b257153436a1f0fea', // DAI
 ]
 
 interface ReturnMetrics {
@@ -104,6 +104,7 @@ async function getPrincipalForUserPerPair(user: string, pairAddress: string) {
  * @param positionT0 // users liquidity info and token rates at beginning of window
  * @param positionT1 // '' at the end of the window
  */
+
 export function getMetricsForPositionWindow(positionT0: Position, positionT1: Position): ReturnMetrics {
   positionT0 = formatPricesForEarlyTimestamps(positionT0)
   positionT1 = formatPricesForEarlyTimestamps(positionT1)

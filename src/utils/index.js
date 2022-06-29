@@ -42,14 +42,14 @@ export function getPoolLink(token0Address, token1Address = null, remove = false)
     return (
       `https://swap.telefy.finance/#/` +
       (remove ? `remove` : `add`) +
-      `/v2/${token0Address === '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2' ? 'ETH' : token0Address}/${'ETH'}`
+      `/v2/${token0Address === '0xc778417e063141139fce010982780140aa0cd5ab' ? 'ETH' : token0Address}/${'ETH'}`
     )
   } else {
     return (
       `https://swap.telefy.finance/#/` +
       (remove ? `remove` : `add`) +
-      `/v2/${token0Address === '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2' ? 'ETH' : token0Address}/${
-        token1Address === '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2' ? 'ETH' : token1Address
+      `/v2/${token0Address === '0xc778417e063141139fce010982780140aa0cd5ab' ? 'ETH' : token0Address}/${
+        token1Address === '0xc778417e063141139fce010982780140aa0cd5ab' ? 'ETH' : token1Address
       }`
     )
   }
@@ -57,11 +57,11 @@ export function getPoolLink(token0Address, token1Address = null, remove = false)
 
 export function getSwapLink(token0Address, token1Address = null) {
   if (!token1Address) {
-    return `https://swap.telefy.finance/#/swap?inputCurrency=${token0Address}`
+    return `https://swap.telefy.finance/#/swap?use=V2&inputCurrency=${token0Address}`
   } else {
-    return `https://swap.telefy.finance/#/swap?inputCurrency=${
-      token0Address === '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2' ? 'ETH' : token0Address
-    }&outputCurrency=${token1Address === '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2' ? 'ETH' : token1Address}`
+    return `https://swap.telefy.finance/#/swap?use=V2&inputCurrency=${
+      token0Address === '0xc778417e063141139fce010982780140aa0cd5ab' ? 'ETH' : token0Address
+    }&outputCurrency=${token1Address === '0xc778417e063141139fce010982780140aa0cd5ab' ? 'ETH' : token1Address}`
   }
 }
 
@@ -217,7 +217,7 @@ export async function getBlocksFromTimestamps(timestamps, skipCount = 500) {
  * @param {Array} timestamps
  */
 export async function getShareValueOverTime(pairAddress, timestamps) {
-  if (!timestamps) {
+  if (!timestamps || timestamps.length == 0) {
     const utcCurrentTime = dayjs()
     const utcSevenDaysBack = utcCurrentTime.subtract(8, 'day').unix()
     timestamps = getTimestampRange(utcSevenDaysBack, 86400, 7)
@@ -240,12 +240,12 @@ export async function getShareValueOverTime(pairAddress, timestamps) {
       values.push({
         timestamp,
         sharePriceUsd,
-        totalSupply: result.data[row].totalSupply,
-        reserve0: result.data[row].reserve0,
-        reserve1: result.data[row].reserve1,
-        reserveUSD: result.data[row].reserveUSD,
-        token0DerivedETH: result.data[row].token0.derivedETH,
-        token1DerivedETH: result.data[row].token1.derivedETH,
+        totalSupply: result.data[row]?.totalSupply,
+        reserve0: result.data[row]?.reserve0,
+        reserve1: result.data[row]?.reserve1,
+        reserveUSD: result.data[row]?.reserveUSD,
+        token0DerivedETH: result.data[row]?.token0.derivedETH,
+        token1DerivedETH: result.data[row]?.token1.derivedETH,
         roiUsd: values && values[0] ? sharePriceUsd / values[0]['sharePriceUsd'] : 1,
         ethPrice: 0,
         token0PriceUSD: 0,
@@ -259,9 +259,9 @@ export async function getShareValueOverTime(pairAddress, timestamps) {
   for (var brow in result?.data) {
     let timestamp = brow.split('b')[1]
     if (timestamp) {
-      values[index].ethPrice = result.data[brow].ethPrice
-      values[index].token0PriceUSD = result.data[brow].ethPrice * values[index].token0DerivedETH
-      values[index].token1PriceUSD = result.data[brow].ethPrice * values[index].token1DerivedETH
+      values[index].ethPrice = result.data[brow]?.ethPrice
+      values[index].token0PriceUSD = result.data[brow]?.ethPrice * values[index].token0DerivedETH
+      values[index].token1PriceUSD = result.data[brow]?.ethPrice * values[index].token1DerivedETH
       index += 1
     }
   }
