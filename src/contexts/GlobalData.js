@@ -312,6 +312,9 @@ async function getGlobalData(ethPrice, oldEthPrice) {
       data.liquidityChangeUSD = liquidityChangeUSD
       data.oneDayTxns = oneDayTxns
       data.txnChange = txnChange
+    } else {
+      data.volumeChangeUSD = 0
+      data.liquidityChangeUSD = 0
     }
   } catch (e) {
     console.log(e)
